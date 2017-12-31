@@ -4,24 +4,47 @@ import './media.css';
 
 class Media extends Component {
 
+	 /*---------- Utilizar el state en consturctor en ECMAScript 6 -------------
 	constructor(props) {
 		super(props)
-		this.handleClick = this.handleClick.bind(this);
+		this.state = {
+			title: props.title
+		}
+	}
+
+	*/
+
+	//---------- Utilizar el state con props en ECMAScript 7 -------------
+
+	state = {
+		title: this.props.title
 	}
 
 	/* 
 
-	// Utilizar el props en ECMAScript 6
+	---------- Utilizar el props en ECMAScript 6 -------------
 
 
 	handleClick(event){
 		console.log(this.props.title)
-	}*/
+	}
+
+	---------- FIN Utilizar el props en ECMAScript 6 -------------
+	*/
 
 	// Utilizar el props en ECMAScript 7
 
 	handleClick = (event) => {
-		console.log(this.props.title)
+		console.log(this.props.title);
+
+		// cambiar state de title:
+
+		this.setState({
+			title: 'Blockchain Video'
+		});
+
+		console.log(this.state.title);
+
 	}
 
 	render(){
@@ -38,7 +61,7 @@ class Media extends Component {
 			<div className="Media" onClick={this.handleClick}>
 				<div className="Media-cover">
 					<img src="./images/covers/bitcoin.jpg" alt="" width={260} height={160} />
-					<h3>{this.props.title}</h3>
+					<h3>{this.state.title}</h3>
 					<p>Hey baby</p>
 				</div>
 			</div>
