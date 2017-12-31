@@ -1,0 +1,13 @@
+.Media {
+	cursor: pointer;
+	margin-right: 15px;
+	display: inline-block;
+	width: 260px;
+	vertical-align: top;
+}
+
+.Media-cover {
+	transition: .3s;
+	box-shadow: 0 0 5px rgba(0,0,0.3);
+	height: 160px;
+}
