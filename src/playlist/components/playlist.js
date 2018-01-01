@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Media from './media.js';
 import './playlist.css';
+import Play from '../../icons/components/play';
 
 class Playlist extends Component {
 	render(){
@@ -13,6 +14,7 @@ class Playlist extends Component {
 			
 
 			<div className="Playlist">
+				<Play />
 				{
 					// Por cada elemento de playlist, me regresa un Media
 					categories.map((item) => {
