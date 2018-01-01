@@ -18,7 +18,8 @@ class Media extends Component {
 
 	state = {
 		title: this.props.title,
-		cover : this.props.cover
+		cover : this.props.cover,
+		author: this.props.author
 	}
 
 	/* 
@@ -61,9 +62,15 @@ class Media extends Component {
 		return (
 			<div className="Media" onClick={this.handleClick}>
 				<div className="Media-cover">
-					<img src={this.state.cover} alt="" width={260} height={160} />
-					<h3>{this.state.title}</h3>
-					<p>Hey baby</p>
+					<img 
+					src={this.state.cover} 
+					alt="" 
+					width={260} 
+					height={160}
+					className="Media-image"
+					 />
+					<h3 className="Media-title">{this.state.title}</h3>
+					<p  className="Media-author">{this.state.author}</p>
 				</div>
 			</div>
 		)
