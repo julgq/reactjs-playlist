@@ -10,11 +10,8 @@ class Playlist extends Component {
 		console.log(this.props.data);
 		return(
 
-
-			
-
 			<div className="Playlist">
-				<Play />
+				<Play size={100} color="red" />
 				{
 					// Por cada elemento de playlist, me regresa un Media
 					categories.map((item) => {
