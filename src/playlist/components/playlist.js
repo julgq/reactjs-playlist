@@ -12,10 +12,12 @@ class Playlist extends Component {
 					playlist.map((item) => {
 						
 						//ECMAScript 6
-						return <Media title={item.title} key={item.id} cover={item.cover} type={item.type} />
+						//return <Media title={item.title} key={item.id} cover={item.cover} type={item.type} />
+
+						//ECMAScript 7
+						return <Media {...item} key={item.id} />
 
 						
-
 					})
 				}
 				
