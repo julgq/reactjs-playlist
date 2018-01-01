@@ -17,7 +17,8 @@ class Media extends Component {
 	//---------- Utilizar el state con props en ECMAScript 7 -------------
 
 	state = {
-		title: this.props.title
+		title: this.props.title,
+		cover : this.props.cover
 	}
 
 	/* 
@@ -60,7 +61,7 @@ class Media extends Component {
 		return (
 			<div className="Media" onClick={this.handleClick}>
 				<div className="Media-cover">
-					<img src="./images/covers/bitcoin.jpg" alt="" width={260} height={160} />
+					<img src={this.state.cover} alt="" width={260} height={160} />
 					<h3>{this.state.title}</h3>
 					<p>Hey baby</p>
 				</div>
@@ -70,9 +71,10 @@ class Media extends Component {
 }
 
 Media.propTypes = {
-	image: PropTypes.string,
+	cover: PropTypes.string,
 	title: PropTypes.string.isRequired,
 	type: PropTypes.oneOf(['video', 'audio']),
+
 }
 
 export default Media;

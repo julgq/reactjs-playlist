@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import Media from './src/playlist/components/media';
+import Playlist from './src/playlist/components/playlist';
+import data from './src/api.json';
 
 const app = document.getElementById('app');
 const holaMundo = <h1>hola</h1>
-ReactDom.render(<Media title="Titulo" type="video" />, app);
+ReactDom.render(<Playlist data={data} />, app);
 
 console.log("que onda");
