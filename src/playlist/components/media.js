@@ -36,7 +36,7 @@ class Media extends Component {
 
 	// Utilizar el props en ECMAScript 7
 
-	handleClick = (event) => {
+	/*handleClick = (event) => {
 		console.log(this.props.title);
 
 		// cambiar state de title:
@@ -47,7 +47,7 @@ class Media extends Component {
 
 		console.log(this.state.title);
 
-	}
+	}*/
 
 	render(){
 		console.log(this.props.title)
@@ -60,7 +60,7 @@ class Media extends Component {
 			} 
 		}
 		return (
-			<div className="Media" onClick={this.handleClick}>
+			<div className="Media" onClick={this.props.handleClick}>
 				<div className="Media-cover">
 					<img 
 					src={this.state.cover} 
