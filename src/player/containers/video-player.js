@@ -6,12 +6,17 @@ import PlayPause from '../components/play-pause';
 import Timer from '../components/timer.js';
 import Controls from '../components/video-player-controls.js';
 import ProgressBar from '../components/progress-bar';
+import Spinner from '../components/spinner';
+import Volume from '../components/volume';
+import FullScreen from '../components/full-screen';
+
 
 class VideoPlayer extends Component {
 	state = {
 		pause: true,
 		duration: 0,
 		currentTime: 0,
+		loading: false,
 	}
 	togglePlay = (event) => {
 		this.setState({
@@ -41,10 +46,46 @@ class VideoPlayer extends Component {
 		this.video.currentTime = event.target.value
 	}
 
+	handleSeeking = event => {
+		this.setState({
+			loading: true
+		})
+	}
+
+	handleSeeked = event => {
+		this.setState({
+			loading: false
+		})
+	}
+
+	handleVolumeChange = event => {
+		this.video.volume = event.target.value
+
+		console.log(this.video.volume)
+	}
+
+	handleFullScreenClick = event => {
+		/* El full screen funciona diferente en cada navegador */
+		console.log(this.player)
+		if (!document.webkitIsFullScreen) {
+			//entrar a fullscreen
+			this.player.webkitRequestFullscreen();
+		}else{
+			//salir a fullscreen
+			document.webkitExitFullscreen();
+		}
+	}
+	
+	setRef = element => {
+		this.player = element
+	}
+
 	render(){
 		return (
 			
-			<VideoPlayerLayout>
+			<VideoPlayerLayout
+				setRef={this.setRef}
+			>
 				<Title
 					title="Esto es un video chido!"
 				/>
@@ -62,14 +103,26 @@ class VideoPlayer extends Component {
 						value={this.state.currentTime}
 						handleProgressChange={this.handleProgressChange}
 					 />
+					 <Volume
+					 handleVolumeChange={this.handleVolumeChange}
+					 />
+					 <FullScreen 
+					 	handleFullScreenClick={this.handleFullScreenClick}
 
+					 />
 				</Controls>
+				<Spinner 
+					active={this.state.loading}
+
+				/>
 				<Video
 					autoplay={this.props.autoplay}
 					pause={this.state.pause}
 					src="http://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4"
 					handleLoadedMetadata={this.handleLoadedMetadata}
 					handleTimeUpdate={this.handleTimeUpdate}
+					handleSeeking={this.handleSeeking}
+					handleSeeked={this.handleSeeked}
 				/>
 			</VideoPlayerLayout>
 			
