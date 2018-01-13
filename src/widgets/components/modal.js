@@ -3,7 +3,7 @@ import './modal.css';
 
 function Modal(props){
 	return (
-		<div className="Modal">
+		<div className="" style={backgroundColor: 'blue'}>
 			{props.children}
 			<button 
 			onClick={props.handleClick}
